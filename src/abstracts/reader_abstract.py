@@ -7,9 +7,9 @@ open_file: given a file path, it opens the file and returns the file object, ove
 close_file: given a file object, it closes the file, override from file_process class
 read: given a file, we can read the file and use formatter to format the string inside the file given
 """
-class Reader(ABC):
+class ReaderAbstract(ABC):
     @abstractmethod
-    def read(self, file_path):
+    def read(self, file):
         pass
 
     @abstractmethod
@@ -17,6 +17,6 @@ class Reader(ABC):
         pass
 
     @abstractmethod
-    def close_file(self, file_object):
+    def close_file(self, file):
         pass
     

@@ -7,9 +7,9 @@ open_file: given a file path, it opens the file and returns the file object, ove
 close_file: given a file object, it closes the file, override from file_process class
 write: given a file, we can write the file and use write in formatted string
 """
-class Writer(ABC):
+class WriterAbstract(ABC):
     @abstractmethod
-    def write(self, file_path):
+    def write(self, file):
         pass
 
     @abstractmethod
@@ -17,6 +17,5 @@ class Writer(ABC):
         pass
 
     @abstractmethod
-    def close_file(self, file_object):
+    def close_file(self, file):
         pass
-    
