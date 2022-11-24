@@ -9,14 +9,14 @@ read: given a file, we can read the file and use formatter to format the string 
 """
 class ReaderAbstract(ABC):
     @abstractmethod
-    def read(self, file):
+    def read(self, bytes_to_read: int) -> str:
         pass
 
     @abstractmethod
-    def open_file(self, file_path):
+    def open_file(self, file_path: str) -> bool:
         pass
 
     @abstractmethod
-    def close_file(self, file):
+    def close_file(self) -> None:
         pass
     

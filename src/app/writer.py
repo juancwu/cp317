@@ -1,29 +1,50 @@
-from src.abstracts.writer_abstract import WriterAbstract
+from abstracts.writer_abstract import WriterAbstract
 from io import TextIOWrapper
+import os
 
-class Reader(WriterAbstract):
-    def write(file):
+class Writer(WriterAbstract):
+    def __init__(self):
+        self._bytes_written = 0
+        self._file = None
+
+    def write(self, data: str):
         #Needs to write down the formatter first
-        return
+        assert self._file, 'Open file first'
+        assert isinstance(self._file, TextIOWrapper), 'File object must be a TextIOWrapper'
+        assert not self._file.closed, 'File is closed'
 
-    def open_file(file_path):
+        bytes_written = self._file.write(data)
+        self._bytes_written += bytes_written
 
-        assert file_path, 'No file path provided'
-        assert isinstance(file_path, str), 'File path must be a string'
+        return bytes_written
+
+    def open_file(self, file_path: str) -> bool:
         
+        if not isinstance(file_path, str):
+            return False, 'File path must be a string'
+        
+        if os.path.exists(file_path):
+            print("File already exists, do you want to override? [y/n]", end=" ")
+            override = input()
+            if override != 'y':
+                return False, 'File already exists'
+
         try:
             file_object = open(file_path, 'w')
         except Exception as e:
-            print("ERROR (FileProcessor): ", str(e))
-            return None
+            return False, str(e)
         
+        self._file = file_object
 
-        return file_object
+        return True
 
 
-    def close_file(file):
-        assert file, 'No file object provided'
-        assert isinstance(file, TextIOWrapper), 'File object must be a TextIOWrapper'
+    def close_file(self) -> int:
+        if not self._file:
+            return False
 
-        file.close()
-        return
+        self._file.close()
+
+        self._file = None
+
+        return True

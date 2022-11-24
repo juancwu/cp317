@@ -9,13 +9,13 @@ write: given a file, we can write the file and use write in formatted string
 """
 class WriterAbstract(ABC):
     @abstractmethod
-    def write(self, file):
+    def write(self, data: str) -> int:
         pass
 
     @abstractmethod
-    def open_file(self, file_path):
+    def open_file(self, file_path: str) -> bool:
         pass
 
     @abstractmethod
-    def close_file(self, file):
+    def close_file(self) -> bool:
         pass
