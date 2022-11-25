@@ -6,7 +6,7 @@ Abstract class for formatter
 
 class FormatterAbstract(ABC):
     @abstractmethod
-    def format(self, data):
+    def format(self):
         """
         Output data in a specific format:
         id, name, course code, final grade
