@@ -1,18 +1,5 @@
-from abc import ABC, abstractmethod
-
-class FileHandlerAbstract(ABC):
-    @property
-    @abstractmethod
-    def is_closed(self):
-        pass
-
-    @abstractmethod
-    def open_file(self, file_path: str) -> bool:
-        pass
-
-    @abstractmethod
-    def close_file(self) -> bool:
-        pass
+from file_handler_abstract import FileHandlerAbstract
+from abc import abstractmethod
 
 """
 Abstract class for reader class
