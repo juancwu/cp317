@@ -8,13 +8,13 @@ sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 sys.path.append(os.path.join(os.path.dirname(__file__), 'tests'))
 
 # import tests
-from tests.writer_test import WriterTest
+from tests.exceptions_test import ExceptionsTest
 
 # setup test suite
 suite = unittest.TestSuite()
 loader = unittest.TestLoader()
 
-suite.addTests(loader.loadTestsFromTestCase(WriterTest))
+suite.addTests(loader.loadTestsFromTestCase(ExceptionsTest))
 
 runner = unittest.TextTestRunner(verbosity=3)
 result = runner.run(suite)

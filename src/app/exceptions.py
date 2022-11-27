@@ -2,25 +2,25 @@ from colorama import Fore
 
 
 # ==================== WARNINGS ====================
-class MissMatchWarning():
+class MissMatchWarning(Exception):
     def __init__(self, student_id: str, missing_in: str):
         self.student_id = student_id
         self.missing_in = missing_in
 
         # construct the message
-        self.message = Fore.RED + "ERROR: " + Fore.RESET
+        self.message = Fore.YELLOW + "WARNING: " + Fore.RESET
         self.message += "Missing " + Fore.BLUE + self.student_id + Fore.RESET
         self.message += " in " + Fore.BLUE + self.missing_in + Fore.RESET
 
     def __str__(self) -> str:
         return self.message
 
-class OverrideWarning():
+class OverrideWarning(Exception):
     def __init__(self, file_path: str) -> None:
         self.file_path = file_path
 
         self.message = Fore.YELLOW + "WARNING: " + Fore.RESET
-        self.message = f"Overriding {Fore.BLUE + self.file_path + Fore.RESET}. IRREVERSIBLE ACTION!"
+        self.message += f"Overriding {Fore.BLUE + self.file_path + Fore.RESET}. IRREVERSIBLE ACTION!"
 
     def __str__(self) -> str:
         return self.message
