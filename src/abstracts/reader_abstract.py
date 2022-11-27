@@ -1,5 +1,19 @@
 from abc import ABC, abstractmethod
 
+class FileHandlerAbstract(ABC):
+    @property
+    @abstractmethod
+    def is_closed(self):
+        pass
+
+    @abstractmethod
+    def open_file(self, file_path: str) -> bool:
+        pass
+
+    @abstractmethod
+    def close_file(self) -> bool:
+        pass
+
 """
 Abstract class for reader class
 It has three methods: open_file and close_file and read
@@ -7,16 +21,7 @@ open_file: given a file path, it opens the file and returns the file object, ove
 close_file: given a file object, it closes the file, override from file_process class
 read: given a file, we can read the file and use formatter to format the string inside the file given
 """
-class ReaderAbstract(ABC):
+class ReaderAbstract(FileHandlerAbstract):
     @abstractmethod
-    def read(self, file):
+    def read(self, bytes_to_read: int) -> str:
         pass
-
-    @abstractmethod
-    def open_file(self, file_path):
-        pass
-
-    @abstractmethod
-    def close_file(self, file):
-        pass
-    

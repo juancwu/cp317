@@ -8,14 +8,18 @@ close_file: given a file object, it closes the file, override from file_process 
 write: given a file, we can write the file and use write in formatted string
 """
 class WriterAbstract(ABC):
-    @abstractmethod
-    def write(self, file):
+    @property
+    def is_closed(self):
         pass
 
     @abstractmethod
-    def open_file(self, file_path):
+    def write(self, data: str) -> int:
         pass
 
     @abstractmethod
-    def close_file(self, file):
+    def open_file(self, file_path: str) -> bool:
+        pass
+
+    @abstractmethod
+    def close_file(self) -> bool:
         pass

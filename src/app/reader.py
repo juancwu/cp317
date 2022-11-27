@@ -1,29 +1,35 @@
-from src.abstracts.reader_abstract import ReaderAbstract
+from abstracts.reader_abstract import FileHandlerAbstract
+from abstracts.reader_abstract import ReaderAbstract
 from io import TextIOWrapper
+import os
 
-class Reader(ReaderAbstract):
-    def read(file):
-        #Needs to write down the formatter first
-        return
+class FileHandler(FileHandlerAbstract):
+    def __init__(self):
+        self._file = None
+        self._is_closed = True
 
-    def open_file(file_path):
+    def open_file(self, file_path: str, mode: str) -> bool:
+        self._file = open(file_path, mode)
+        return True
 
-        assert file_path, 'No file path provided'
-        assert isinstance(file_path, str), 'File path must be a string'
-        
-        try:
-            file_object = open(file_path, 'r')
-        except Exception as e:
-            print("ERROR (FileProcessor): ", str(e))
-            return None
-        
+class Reader(FileHandler):
+    def __init__(self) -> None:
+        super().__init__()
+        self._file = None
+        self._is_closed = True
 
-        return file_object
+    def read(self, bytes_to_read: int = 16):
+
+        data = self.file.read(bytes_to_read)
+        self._bytes_read += bytes_to_read
+
+        return data
 
 
-    def close_file(file):
-        assert file, 'No file object provided'
-        assert isinstance(file, TextIOWrapper), 'File object must be a TextIOWrapper'
+    def close_file(self) -> bool:
+        assert self._file, 'No file object provided'
+        assert isinstance(self.file, TextIOWrapper), 'File object must be a TextIOWrapper'
 
-        file.close()
-        return
+        self._file.close()
+
+        return True
