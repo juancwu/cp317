@@ -8,7 +8,7 @@ class Formatter(Formatter_abstract):
     """
     dict_data = {}
 
-    def format(self):
+    def format(self, name_data, course_data):
         string_data = ""
 
         for key, val in self.dict_data:
@@ -23,6 +23,6 @@ class Formatter(Formatter_abstract):
         
         return
     
-    def load_course_Data(self, data):
-
+    def load_course_data(self, data):
+        
         return
