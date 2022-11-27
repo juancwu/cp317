@@ -17,6 +17,6 @@ class ReaderAbstract(ABC):
         pass
 
     @abstractmethod
-    def close_file(self) -> None:
+    def close_file(self) -> bool:
         pass
     

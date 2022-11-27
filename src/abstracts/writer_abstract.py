@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod
+from abc import ABC, abstractmethod, abstractproperty
 
 """
 Abstract class for writer class
@@ -8,6 +8,10 @@ close_file: given a file object, it closes the file, override from file_process 
 write: given a file, we can write the file and use write in formatted string
 """
 class WriterAbstract(ABC):
+    @property
+    def is_closed(self):
+        pass
+
     @abstractmethod
     def write(self, data: str) -> int:
         pass

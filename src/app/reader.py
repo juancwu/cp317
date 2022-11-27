@@ -5,12 +5,12 @@ import os
 class Reader(ReaderAbstract):
     def __init__(self) -> None:
         super().__init__()
-        self._bytes_read = 0
         self._file = None
 
     def read(self, bytes_to_read: int = 16):
-        assert self.file, 'Open file first'
-        assert isinstance(self.file, TextIOWrapper), 'File object must be a TextIOWrapper'
+        # check if file is opened or not
+        if not self._file:
+            
 
         data = self.file.read(bytes_to_read)
         self._bytes_read += bytes_to_read
@@ -35,10 +35,10 @@ class Reader(ReaderAbstract):
         return True
 
 
-    def close_file(self) -> None:
-        assert self.file, 'No file object provided'
+    def close_file(self) -> bool:
+        assert self._file, 'No file object provided'
         assert isinstance(self.file, TextIOWrapper), 'File object must be a TextIOWrapper'
 
-        self.file.close()
+        self._file.close()
 
-        return
+        return True

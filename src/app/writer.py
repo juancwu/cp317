@@ -1,11 +1,16 @@
 from abstracts.writer_abstract import WriterAbstract
 from io import TextIOWrapper
 import os
+from copy import deepcopy
 
 class Writer(WriterAbstract):
     def __init__(self):
-        self._bytes_written = 0
+        self._is_closed = True
         self._file = None
+
+    @property
+    def is_closed(self):
+        return deepcopy(self._is_closed)
 
     def write(self, data: str):
         #Needs to write down the formatter first
