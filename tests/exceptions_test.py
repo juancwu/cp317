@@ -1,11 +1,6 @@
 import unittest
 from src.app.exceptions import MissingValueError, MissMatchWarning, OverrideWarning, FileDoesNotExistsError, ReadPermissionError, WritePermissionError, NoOpenFileError, IncorrectDataTypeError
-
-# Colour prefixes
-RED = '\x1b[31m'
-BLUE = '\x1b[34m'
-YELLOW = '\x1b[33m'
-RESET = '\x1b[39m'
+from tests.colours import *
 
 class ExceptionsTest(unittest.TestCase):
     def setUp(self) -> None:
