@@ -13,19 +13,25 @@ conda env create -f env.yml
 ```
 
 ## 3. Run program
+### One line command run:
 ```bash
-python main.py
+python3 main.py NameFile.txt CourseFile.txt
+```
+
+### Run with command line interface:
+```bash
+python3 main.py
 ```
 
 # Testing
 
 ## Unit tests
 Run the command below at the root level of the project.
-`python3 -m coverage run -m unittest`
+`python3 -m coverage run -m unittest -b`
 This will run all test cases and generate a coverage report.
 
 ## Check Test Coverage
-Run command `coverage report -m` to get a report on the console. \
+Run command `coverage report -m` to get a report on the console.
 
 To view report as a website with more details run:
 ```bash
