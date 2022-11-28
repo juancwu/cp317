@@ -64,8 +64,8 @@ class NoOpenFileError(Exception):
         return self.message
 
 class MissingValueError(Exception):
-    def __init__(self, line_number: str, input_file: str) -> None:
-        self.message = Fore.RED + "ERROR: " + Fore.RESET + f"Missing value in {Fore.BLUE + input_file + Fore.RESET} at line {Fore.BLUE + line_number + Fore.RESET}"
+    def __init__(self, line_number: int, input_file: str) -> None:
+        self.message = Fore.RED + "ERROR: " + Fore.RESET + f"Missing value in {Fore.BLUE + input_file + Fore.RESET} at line {Fore.BLUE}{line_number}{Fore.RESET}"
 
         super().__init__(self.message)
     
@@ -73,8 +73,8 @@ class MissingValueError(Exception):
         return self.message
 
 class IncorrectDataTypeError(Exception):
-    def __init__(self, line_number: str, input_file: str) -> None:
-        self.message = Fore.RED + "ERROR: " + Fore.RESET + f"Incorrect data type in {Fore.BLUE + input_file + Fore.RESET} at line {Fore.BLUE + line_number + Fore.RESET}"
+    def __init__(self, line_number: int, input_file: str) -> None:
+        self.message = Fore.RED + "ERROR: " + Fore.RESET + f"Incorrect data type in {Fore.BLUE + input_file + Fore.RESET} at line {Fore.BLUE}{line_number}{Fore.RESET}"
 
         super().__init__(self.message)
     
