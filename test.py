@@ -12,6 +12,7 @@ from tests.exceptions_test import ExceptionsTest
 from tests.file_handler_test import FileHandlerTest
 from tests.reader_test import ReaderTest
 from tests.writer_test import WriterTest
+from tests.formatter_test import FormatterTest
 
 # setup test suite
 suite = unittest.TestSuite()
@@ -21,6 +22,7 @@ suite.addTests(loader.loadTestsFromTestCase(ExceptionsTest))
 suite.addTests(loader.loadTestsFromTestCase(FileHandlerTest))
 suite.addTests(loader.loadTestsFromTestCase(ReaderTest))
 suite.addTests(loader.loadTestsFromTestCase(WriterTest))
+suite.addTests(loader.loadTestsFromTestCase(FormatterTest))
 
 runner = unittest.TextTestRunner(verbosity=3)
 result = runner.run(suite)
