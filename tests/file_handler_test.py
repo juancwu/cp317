@@ -1,15 +1,10 @@
 from src.app.file_handler import FileHandler
 from src.app.exceptions import FileDoesNotExistsError, ReadPermissionError, WritePermissionError
+from tests.colours import *
 import io
 import unittest
 from unittest.mock import patch
 import os
-
-# Colour prefixes
-RED = '\x1b[31m'
-BLUE = '\x1b[34m'
-YELLOW = '\x1b[33m'
-RESET = '\x1b[39m'
 
 class FileHandlerTest(unittest.TestCase):
     def setUp(self) -> None:

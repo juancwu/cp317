@@ -15,7 +15,7 @@ class FormatterAbstract(ABC):
         pass
 
     @abstractmethod
-    def load_name_data(self, data):
+    def load_name_data(self, data: str, line: int):
         """
         Load name data into the formatter
         stored in the format of:
@@ -24,7 +24,7 @@ class FormatterAbstract(ABC):
         pass
 
     @abstractmethod
-    def load_course_data(self, data):
+    def load_course_data(self, data: str, line: int):
         """
         Load course data into the formatter
         stored in the format of:
