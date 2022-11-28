@@ -243,6 +243,14 @@ class FileHandlerTest(unittest.TestCase):
         os.remove(new_file_path)
     
     def tearDown(self) -> None:
+        # after tests cleanup
+        if os.path.exists(self.no_read_file_path):
+            os.remove(self.no_read_file_path)
+        if os.path.exists(self.no_write_file_path):
+            os.remove(self.no_write_file_path)
+        if os.path.exists(self.tmp_test_file_path):
+            os.remove(self.tmp_test_file_path)
+
         self.file_handler = None
         self.test_file_path = None
         self.invalid_test_file_path = None
