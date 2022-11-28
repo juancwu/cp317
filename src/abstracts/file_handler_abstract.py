@@ -7,9 +7,9 @@ class FileHandlerAbstract(ABC):
         pass
 
     @abstractmethod
-    def open_file(self, file_path: str) -> bool:
+    def open_file(self, file_path: str) -> None:
         pass
 
     @abstractmethod
-    def close_file(self) -> bool:
+    def close_file(self) -> None:
         pass
