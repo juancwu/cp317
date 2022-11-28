@@ -9,12 +9,18 @@ sys.path.append(os.path.join(os.path.dirname(__file__), 'tests'))
 
 # import tests
 from tests.exceptions_test import ExceptionsTest
+from tests.file_handler_test import FileHandlerTest
+from tests.reader_test import ReaderTest
+from tests.writer_test import WriterTest
 
 # setup test suite
 suite = unittest.TestSuite()
 loader = unittest.TestLoader()
 
 suite.addTests(loader.loadTestsFromTestCase(ExceptionsTest))
+suite.addTests(loader.loadTestsFromTestCase(FileHandlerTest))
+suite.addTests(loader.loadTestsFromTestCase(ReaderTest))
+suite.addTests(loader.loadTestsFromTestCase(WriterTest))
 
 runner = unittest.TextTestRunner(verbosity=3)
 result = runner.run(suite)
