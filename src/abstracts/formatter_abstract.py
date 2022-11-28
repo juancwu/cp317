@@ -5,6 +5,7 @@ Abstract class for formatter
 """
 
 class FormatterAbstract(ABC):
+    @property
     @abstractmethod
     def format(self):
         """
