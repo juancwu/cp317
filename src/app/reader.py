@@ -1,4 +1,4 @@
-from abstracts.reader_abstract import FileHandlerAbstract
+from abstracts.reader_abstract import *
 from abstracts.reader_abstract import ReaderAbstract
 from io import TextIOWrapper
 import os
