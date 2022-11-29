@@ -83,7 +83,7 @@ class IncorrectDataTypeError(Exception):
 
 class QuitException(Exception):
     def __init__(self):
-        self.message = Fore.RED + "Quitting the program..." + Fore.RESET
+        self.message = Fore.RED + "Received '!q'. The program will try to quit gracefully..." + Fore.RESET
 
         super().__init__(self.message)
     
