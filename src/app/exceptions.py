@@ -80,4 +80,13 @@ class IncorrectDataTypeError(Exception):
     
     def __str__(self) -> str:
         return self.message
+
+class QuitException(Exception):
+    def __init__(self):
+        self.message = Fore.RED + "Quitting the program..." + Fore.RESET
+
+        super().__init__(self.message)
+    
+    def __str__(self) -> str:
+        return self.message
 # ==================== ERRORS ====================
