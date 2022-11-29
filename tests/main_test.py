@@ -3,7 +3,8 @@ import os
 from unittest.mock import patch
 
 # local module
-from main import main
+from main import main, graceflul_exit
+from src.app.writer import Writer
 
 class MainTest(unittest.TestCase):
     def setUp(self) -> None:
@@ -38,8 +39,13 @@ class MainTest(unittest.TestCase):
 
         with patch('builtins.input', side_effect=[self.name_file, self.course_file, "!q"]):
             main()
-            self.assertFalse(os.path.exists(self.output_file))\
-        
+            self.assertFalse(os.path.exists(self.output_file))
+    
+    def test_keyboard_interrupt(self):
+        with patch('builtins.input', side_effect=KeyboardInterrupt):
+            main()
+            self.assertFalse(os.path.exists(self.output_file))
+
     
     def test_main_invalid_inputs(self):
         # invalid name file
@@ -51,7 +57,18 @@ class MainTest(unittest.TestCase):
         with patch('builtins.input', side_effect=[self.name_file, "invalid", self.output_file]):
             main()
             self.assertFalse(os.path.exists(self.output_file))
-
     
+    # this has to be tested separately because the writer is only opened at
+    # a very late stage in the program and its not possible to patch the
+    def test_graceful_exit_opened_writer(self):
+        # create a writer and open a test file
+        writer = Writer()
+        writer.open_file(self.output_file, "w")
+        self.assertFalse(writer.is_closed())
+        self.assertTrue(os.path.exists(self.output_file))
 
+        # now call graceful exit and writer should be closed and output file deleted
+        graceflul_exit(writer=writer)
+        self.assertTrue(writer.is_closed())
+        self.assertFalse(os.path.exists(self.output_file))
 
