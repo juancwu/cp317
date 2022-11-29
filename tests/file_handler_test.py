@@ -1,5 +1,5 @@
-from src.app.file_handler import FileHandler
-from src.app.exceptions import FileDoesNotExistsError, ReadPermissionError, WritePermissionError, QuitException
+from src.sgf.app.file_handler import FileHandler
+from src.sgf.app.exceptions import FileDoesNotExistsError, ReadPermissionError, WritePermissionError, QuitException
 from tests.colours import *
 import io
 import unittest

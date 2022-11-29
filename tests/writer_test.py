@@ -1,5 +1,5 @@
-from src.app.writer import Writer
-from src.app.exceptions import NoOpenFileError
+from src.sgf.app.writer import Writer
+from src.sgf.app.exceptions import NoOpenFileError
 from unittest.mock import patch
 import unittest
 import os
