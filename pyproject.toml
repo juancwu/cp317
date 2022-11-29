@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sgf"
+version = "1.0.0"
+authors = [
+  { name="Juan Wu", email="jcwuchen00@gmail.com" },
+  { name="Philip Chung", email="a2782541671@gmail.com" },
+  { name="Jackie Truong", email="itsjacquellinetruong@gmail.com" },
+  { name="Rhea Sharma", email="rheasharma0212@gmail.com" },
+]
+description = "Group 7 of year 2022 fall term's project for CP317"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+  'colorama==0.4.5',
+]
+[project.optional-dependencies]
+tests = [
+  'coverage==6.3.2',
+]
+
+
+[project.urls]
+"Homepage" = "https://github.com/juancwu/cp317"
+"Bug Tracker" = "https://github.com/juancwu/cp317/issues"
+
+[project.scripts]
+sgf = "sgf.main:main"
