@@ -7,6 +7,7 @@ class FileHandler(FileHandlerAbstract):
     def __init__(self) -> None:
         self._file = None
         self._is_closed = True
+        self._file_path = ""
     
     def open_file(self, file_path: str, mode: str) -> str:
         # if file is already open, do nothing
@@ -25,7 +26,7 @@ class FileHandler(FileHandlerAbstract):
                 raise ReadPermissionError(file_path)
         elif mode == "w":
             if os.path.isdir(file_path):
-                raise Exception("Invalid file path. Path is a directory")
+                raise FileDoesNotExistsError(file_path)
             
             # if write mode check if file exists and if it is a file
             # ask for override permission
@@ -48,10 +49,11 @@ class FileHandler(FileHandlerAbstract):
                         if not os.access(file_path, os.W_OK):
                             raise WritePermissionError(file_path)
                         break
-
         # create file
         self._file = open(file_path, mode)
         self._is_closed = False
+
+        self._file_path = file_path
 
         return file_path
     
@@ -69,3 +71,6 @@ class FileHandler(FileHandlerAbstract):
 
     def is_closed(self):
         return self._is_closed
+
+    def get_file_path(self):
+        return self._file_path
