@@ -1,13 +1,20 @@
-# CP317 PROJECT
+# CP317 PROJECT - Student Grades Formatter
+![](./docs/images/sgf_ascii_art.png)
 
 # Quick Start
 
 ## System Requirements
 1. Python 3.9.x or later - [Download](https://www.python.org/downloads/) from official site.
-2. Get `git` - [Download](https://git-scm.com/downloads) from official site.
+2. `Optional`
+    - Get `git` to install from GitHub repository - [Download](https://git-scm.com/downloads) from official site.
 
 ## Installation Steps
-Install package from GitHub repository
+### Install using `pip`.
+```bash
+python3 -m pip install sgf
+```
+
+### Install from GitHub repository
 ```bash
 python3 -m pip install git+https://github.com/juancwu/cp317.git
 ```
@@ -16,6 +23,7 @@ python3 -m pip install git+https://github.com/juancwu/cp317.git
 ```bash
 sgf
 ```
+![](./docs/images/sgf_screenshot.png)
 
 # Development Environment Setup
 
