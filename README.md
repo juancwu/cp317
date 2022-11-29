@@ -1,7 +1,23 @@
 # CP317 PROJECT
 
+# Quick Start
 
-# Environment Setup
+## System Requirements
+1. Python 3.9.x or later - [Download](https://www.python.org/downloads/) from official site.
+2. Get `git` - [Download](https://git-scm.com/downloads) from official site.
+
+## Installation Steps
+Install package from GitHub repository
+```bash
+python3 -m pip install git+https://github.com/juancwu/cp317.git
+```
+
+## Try it out!
+```bash
+sgf
+```
+
+# Development Environment Setup
 
 ## 1. Install MiniConda
 Follow the installation instructions for your operating system. [Download link](https://docs.conda.io/en/latest/miniconda.html)
@@ -12,26 +28,18 @@ Follow the installation instructions for your operating system. [Download link](
 conda env create -f env.yml
 ```
 
-## 3. Run program
-### One line command run:
-```bash
-python3 main.py NameFile.txt CourseFile.txt
-```
-
-### Run with command line interface:
-```bash
-python3 main.py
-```
-
 # Testing
-
-## Unit tests
 Run the command below at the root level of the project.
-`python3 -m coverage run -m unittest -b`
+```bash
+python3 -m coverage run -m unittest -b
+```
 This will run all test cases and generate a coverage report.
 
 ## Check Test Coverage
-Run command `coverage report -m` to get a report on the console.
+View coverage report results.
+```bash
+coverage report
+```
 
 To view report as a website with more details run:
 ```bash
@@ -39,10 +47,13 @@ coverage html
 python3 -m http.server 5555 --directory ./htmlcov
 ```
 
-## Run test.py 
+## Alternate way to run tests
+Run the `test.py` file in the root level of the project. This option will run the tests but not create a coverage report.
+```bash
+python3 test.py
+```
 
 # Extras
-
 ## Export Environment
 ```bash
 conda env export --from-history | grep -v "^prefix: " > env.yml
