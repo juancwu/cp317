@@ -1,5 +1,5 @@
 from src.app.file_handler import FileHandler
-from src.app.exceptions import FileDoesNotExistsError, ReadPermissionError, WritePermissionError
+from src.app.exceptions import FileDoesNotExistsError, ReadPermissionError, WritePermissionError, QuitException
 from tests.colours import *
 import io
 import unittest
@@ -237,6 +237,60 @@ class FileHandlerTest(unittest.TestCase):
         os.remove(self.tmp_test_file_path)
         os.remove(new_file_path)
     
+    def test_quit_at_input_directory(self):
+        self.assertTrue(self.file_handler.is_closed())
+
+        # create a temporary file to trigger override
+        with open(self.tmp_test_file_path, "w") as file:
+            file.write("test")
+            
+        with patch("builtins.input", side_effect=["n", "tests/data", "!q"]):
+            with self.assertRaises(QuitException):
+                self.file_handler.open_file(self.tmp_test_file_path, "w")
+
+        self.assertTrue(self.file_handler.is_closed())
+        self.assertIsNone(self.file_handler._file)
+    
+    def test_quit_at_override(self):
+        self.assertTrue(self.file_handler.is_closed())
+
+        # create a temporary file to trigger override
+        with open(self.tmp_test_file_path, "w") as file:
+            file.write("test")
+            
+        with patch("builtins.input", side_effect=["!q"]):
+            with self.assertRaises(QuitException):
+                self.file_handler.open_file(self.tmp_test_file_path, "w")
+
+        self.assertTrue(self.file_handler.is_closed())
+        self.assertIsNone(self.file_handler._file)
+    
+    def test_quit_at_input_file(self):
+        self.assertTrue(self.file_handler.is_closed())
+
+        # create a temporary file to trigger override
+        with open(self.tmp_test_file_path, "w") as file:
+            file.write("test")
+            
+        with patch("builtins.input", side_effect=["n", "!q"]):
+            with self.assertRaises(QuitException):
+                self.file_handler.open_file(self.tmp_test_file_path, "w")
+
+        self.assertTrue(self.file_handler.is_closed())
+        self.assertIsNone(self.file_handler._file)
+    
+    def test_override_with_no_write_permission(self):
+        # create file with no write permission
+        with open(self.no_write_file_path, "w") as file:
+            file.write("test")
+        os.chmod(self.no_write_file_path, 0o400)
+
+        # try to override
+        with patch("builtins.input", side_effect=["y"]):
+            with self.assertRaises(WritePermissionError):
+                self.file_handler.open_file(self.no_write_file_path, "w")
+
+
     def tearDown(self) -> None:
         # after tests cleanup
         if os.path.exists(self.no_read_file_path):

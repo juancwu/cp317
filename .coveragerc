@@ -1,2 +1,8 @@
 [run]
 omit = *tests*,*_abstract.py,*__init__.py,test.py
+
+[report]
+exclude_lines =
+    pragma: no cover
+    if __name__ == .__main__.:
+    break
