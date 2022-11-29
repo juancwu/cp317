@@ -33,12 +33,16 @@ class FileHandler(FileHandlerAbstract):
             while os.path.exists(file_path):
                 if os.path.isdir(file_path):
                     print("Invalid file path. Path is a directory")
-                    file_path = input("Enter a valid file path: ")
+                    file_path = input("Enter a valid file path (!q to quit): ")
+                    if file_path == "!q":
+                        print(f"{Fore.RED}Quitting...{Fore.RESET}")
                 else:
                     override_permission = input(f"File {Fore.BLUE + file_path + Fore.RESET} already exists. Do you want to override it? (y/n): ")
                     if override_permission != "y":
                         # rename output filename
-                        file_path = input(f"Enter new file name: ")
+                        file_path = input(f"Enter new file name (enter !q to quit): ")
+                        if file_path == "!q":
+                            print(f"{Fore.RED}Quitting...{Fore.RESET}")
                     else:
                         if not os.access(file_path, os.W_OK):
                             raise WritePermissionError(file_path)
