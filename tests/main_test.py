@@ -3,8 +3,8 @@ import os
 from unittest.mock import patch
 
 # local module
-from main import main, graceflul_exit
-from src.app.writer import Writer
+from src.sgf.main import main, graceflul_exit
+from src.sgf.app.writer import Writer
 
 class MainTest(unittest.TestCase):
     def setUp(self) -> None:

@@ -1,5 +1,5 @@
-from src.app.file_handler import FileHandler
-from src.app.exceptions import NoOpenFileError
+from .file_handler import FileHandler
+from .exceptions import NoOpenFileError
 
 class Writer(FileHandler):
     def __init__(self):

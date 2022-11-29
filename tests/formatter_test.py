@@ -1,7 +1,7 @@
-from src.app.formatter import Formatter
-from src.app.writer import Writer
-from src.app.reader import Reader
-from src.app.exceptions import MissingValueError, IncorrectDataTypeError
+from src.sgf.app.formatter import Formatter
+from src.sgf.app.writer import Writer
+from src.sgf.app.reader import Reader
+from src.sgf.app.exceptions import MissingValueError, IncorrectDataTypeError
 from tests.colours import *
 import unittest
 import io

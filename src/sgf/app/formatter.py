@@ -1,5 +1,5 @@
-from abstracts.formatter_abstract import FormatterAbstract
-from src.app.exceptions import MissingValueError, IncorrectDataTypeError, MissMatchWarning
+from ..abstracts.formatter_abstract import FormatterAbstract
+from .exceptions import MissingValueError, IncorrectDataTypeError, MissMatchWarning
 from collections import defaultdict
 import re
 

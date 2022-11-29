@@ -1,5 +1,5 @@
-from src.app.reader import Reader
-from src.app.exceptions import NoOpenFileError
+from src.sgf.app.reader import Reader
+from src.sgf.app.exceptions import NoOpenFileError
 import unittest
 import os
 import io

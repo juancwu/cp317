@@ -1,5 +1,5 @@
-from src.abstracts.file_handler_abstract import FileHandlerAbstract
-from src.app.exceptions import FileDoesNotExistsError, ReadPermissionError, WritePermissionError, QuitException
+from ..abstracts.file_handler_abstract import FileHandlerAbstract
+from .exceptions import FileDoesNotExistsError, ReadPermissionError, WritePermissionError, QuitException
 import os
 from colorama import Fore
 

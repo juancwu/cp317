@@ -1,5 +1,5 @@
 import unittest
-from src.app.exceptions import MissingValueError, MissMatchWarning, OverrideWarning, FileDoesNotExistsError, ReadPermissionError, WritePermissionError, NoOpenFileError, IncorrectDataTypeError
+from src.sgf.app.exceptions import MissingValueError, MissMatchWarning, OverrideWarning, FileDoesNotExistsError, ReadPermissionError, WritePermissionError, NoOpenFileError, IncorrectDataTypeError
 from tests.colours import *
 
 class ExceptionsTest(unittest.TestCase):

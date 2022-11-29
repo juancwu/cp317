@@ -2,12 +2,12 @@ import sys
 import os
 from colorama import Fore
 
-sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
+sys.path.append(os.path.join(os.path.dirname(__file__), 'app'))
 
-from src.app.reader import Reader
-from src.app.writer import Writer
-from src.app.formatter import Formatter
-from src.app.exceptions import QuitException
+from .app.reader import Reader
+from .app.writer import Writer
+from .app.formatter import Formatter
+from .app.exceptions import QuitException
 
 def graceflul_exit(exception=None,name_reader:Reader=None,course_reader:Reader=None,writer:Writer=None):
     print(exception)

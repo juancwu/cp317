@@ -1,6 +1,5 @@
 from colorama import Fore
 
-
 # ==================== WARNINGS ====================
 class MissMatchWarning(Exception):
     def __init__(self, student_id: str, missing_in: str):
