@@ -18,12 +18,12 @@ class Formatter(FormatterAbstract):
         
         for student_id, name in self._name_data.items():
             if student_id not in self._course_data:
-                string_data += f"{student_id} {name}\n"
+                string_data += f"{student_id:<15} {name:<20}\n"
                 print(MissMatchWarning(student_id, "course data file"))
             else:
                 for course, data in self._course_data[student_id].items():
                     grade = float(data[0]) * 0.2 + float(data[1]) * 0.2 + float(data[2]) * 0.2 + float(data[3]) * 0.4
-                    string_data += f"{student_id}, {name}, {course}, {grade:.1f}\n"
+                    string_data += f"{student_id:<15} {name:<20} {course:<10} {grade:<15.1f}\n"
 
         
         return string_data
