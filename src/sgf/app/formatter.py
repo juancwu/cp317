@@ -4,6 +4,8 @@ from collections import defaultdict
 import re
 
 class Formatter(FormatterAbstract):
+    # Static Variable
+    table_header = f'{"Student ID":<10} | {"Name":<20} | {"Course Code":<11} | {"Final Grade":<11}'
 
     """
     Key of the data will be the id and it will have an array for the data to store different data
@@ -14,19 +16,28 @@ class Formatter(FormatterAbstract):
         self._course_data = defaultdict(dict)
 
     def format(self):
-        string_data = ""
+        """
+        Formats the data stored in internal buffers into the format shown below:
         
+        
+        Student ID | Name                  | Course Code | Final Grade    
+        ---------- | --------------------- | ----------- | -----------
+        123456789  | AAAAAAAAAAAAAAAAAAAA  | CP222       | 69.0
+
+        Usage: table = formatter.format()
+        """
+        # this will get the header of the table
+        table = self._get_format_str("Student ID", "Name", course_code="Course Code", grade="Final Grade")  
         for student_id, name in self._name_data.items():
             if student_id not in self._course_data:
-                string_data += f"{student_id} {name}\n"
+                table += self._get_format_str(student_id, name)
                 print(MissMatchWarning(student_id, "course data file"))
             else:
                 for course, data in self._course_data[student_id].items():
                     grade = float(data[0]) * 0.2 + float(data[1]) * 0.2 + float(data[2]) * 0.2 + float(data[3]) * 0.4
-                    string_data += f"{student_id}, {name}, {course}, {grade:.1f}\n"
-
+                    table += self._get_format_str(student_id, name, course_code=course, grade=f"{grade:.1f}")
         
-        return string_data
+        return table
 
     def load_name_data(self, data: str, line: int):
         # remove leading and trailing spaces and new line character
@@ -89,3 +100,9 @@ class Formatter(FormatterAbstract):
         self._course_data[text_arr[0]][text_arr[1]] = text_arr[2:6]
         
         return 
+
+    def _get_format_str(self, student_id: str, name: str, course_code: str = "", grade: str = "", end="\n") -> str:
+        dash = '-'
+        row_separator = f"| {dash * 10:<10} | {dash * 20:<20} | {dash * 11:<11} | {dash * 11:<11} |{end}"
+        string_data = f'| {student_id:<10} | {name:<20} | {course_code:<11} | {grade:<11} |{end}' + row_separator
+        return string_data
