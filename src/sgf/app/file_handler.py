@@ -1,5 +1,5 @@
 from ..abstracts.file_handler_abstract import FileHandlerAbstract
-from .exceptions import FileDoesNotExistsError, ReadPermissionError, WritePermissionError, QuitException
+from .exceptions import FileDoesNotExistsError, ReadPermissionError, WritePermissionError, QuitException, OverrideWarning
 import os
 from colorama import Fore
 
@@ -48,6 +48,8 @@ class FileHandler(FileHandlerAbstract):
                     else:
                         if not os.access(file_path, os.W_OK):
                             raise WritePermissionError(file_path)
+                        # show override warning
+                        print(OverrideWarning(file_path))
                         break
         # create file
         self._file = open(file_path, mode)
