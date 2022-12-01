@@ -55,6 +55,13 @@ coverage html
 python3 -m http.server 5555 --directory ./htmlcov
 ```
 
+## Install Package as Command Script
+**NOTE**: Only for development environment!
+```bash
+cd /project/root/directory
+pip install . --use-feature=in-tree-build
+```
+
 ## Alternate way to run tests
 Run the `test.py` file in the root level of the project. This option will run the tests but not create a coverage report.
 ```bash
